@@ -2240,7 +2240,7 @@ def index():
     user_location = geolocator(ip)
     all_states = states()
     state_questions = all_states[user_location]
-    rand_questions = random.sample(list(state_questions.items()), 3)
+    rand_questions = random.sample(list(state_questions.items()), 1)
     return render_template('index.html', questions=rand_questions)
 
 if __name__ == "__main__":
