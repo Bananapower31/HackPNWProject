@@ -16,7 +16,7 @@ def geolocator(ip):
             Region = location_info.get("region")
             return Region
         else:
-            print("An Error Occurred")
+            print("An Error Occurred!")
     except Exception as e:
         print("An error occurred:", e)
         return None
