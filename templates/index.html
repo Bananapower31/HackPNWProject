@@ -42,14 +42,27 @@
             <p> {{ question }}</p>
             <table><tr>
             {% for option in data.options %}
-              <td><button onclick="setColor(this, 'green')" class="button" name="question" value = "{{option}}"> {{option}} </button></td>
+              <td><button onclick="setColor(this, '{{option}}', '{{data.answer}}')" class="button" name="question" value = "{{option}}"> {{option}} </button></td>
             {% endfor %}
             </tr></table>
         {% endfor %}
+        <table><tr>
+          <td><button class = "button" onclick = "pagereload()" name = "next" value = "next">Next Question</button></td>
+        </tr>
+        </table>
   </form>
     <script>
-      function setColor(_this, color) {
-        _this.style.backgroundColor = color
+      function pagereload(){
+        location.reload()
+      }
+
+      function setColor(_this, selected, answer) {
+        if (selected === answer){
+        _this.style.backgroundColor = "green"
+        }
+        else{
+          _this.style.backgroundColor = "red"
+        }
       }
     </script>
 </body>
