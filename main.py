@@ -4,14 +4,14 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 ip = requests.get('https://api.ipify.org').text
-api_key = "at_pBkfrZykUUjsyiQvojb8PMutW10gV"
+api_key = "at_TGFZTCVqhr6MAWoXTYTMcfJ99Md8c"
 
 
 def geolocator(ip):
     try:
         response = requests.get(f"https://geo.ipify.org/api/v2/country,city?apiKey={api_key}&ipAddress={ip}")
         if response.status_code == 200:
-            data = response.json()
+            data = response.json() 
             location_info = data.get("location", {})
             Region = location_info.get("region")
             return Region

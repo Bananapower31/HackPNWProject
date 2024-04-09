@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
 </head>
+session['correct'] = 0
+session['total'] = 0
 <style>
     html, body {
       font: Times;
@@ -26,20 +28,22 @@
     .button{
             margin: 10px;
             padding: 20px 50px;
-            background-color: #ffe602de;
+            background-color: #da589f;
             color: black;
             border: none;
             font-size: 15px;
             border-radius: 5px;
+            margin-top: 50px;
             
     }
 </style>
 </head>
 <body>
   <form action="javascript:void(0);">
-    <h1>Fun on the Run!</h1>
+    <h1 
+    style="background-color: #3173f7; color: #42cef5;text-align: center;">ROAD TRIP FUN TIME!</h1>
         {% for question, data in questions %}
-            <p> {{ question }}</p>
+            <p style="background-color: #1ebd4e; color: darkgreen; text-align: center;"> {{ question }}</p>
             <table><tr>
             {% for option in data.options %}
               <td><button onclick="setColor(this, '{{option}}', '{{data.answer}}')" class="button" name="question" value = "{{option}}"> {{option}} </button></td>
@@ -53,12 +57,16 @@
   </form>
     <script>
       function pagereload(){
+        total + 1
+        console.log(total)
         location.reload()
       }
 
       function setColor(_this, selected, answer) {
         if (selected === answer){
-        _this.style.backgroundColor = "green"
+          _this.style.backgroundColor = "green"
+          correct + 1
+          
         }
         else{
           _this.style.backgroundColor = "red"
